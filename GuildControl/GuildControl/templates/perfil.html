@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Guild Control</title>
+    <style>
+        body {
+            margin: 0;
+            background: #0d0018;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background: #1b0030;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #9d00ff;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .container {
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1b0030;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #330066;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(153, 0, 255, 0.2);
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8b5cf6, #d946ef);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        h1 { color: #c78cff; margin-bottom: 5px; }
+        .plano-tag {
+            background: #9d00ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .stat-item {
+            background: #260040;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .stat-item h3 { margin: 0; color: #9d00ff; }
+        .btn {
+            background: #9d00ff;
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn-danger { background: #b91c1c; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{{ url_for('dashboard') }}" style="font-size: 20px; color: #c78cff;">Guild Control</a>
+    <div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('auth.logout') }}" style="color: #ff4d4d;">Sair</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="avatar">{{ usuario.username[:2].upper() }}</div>
+        <h1>{{ usuario.username }}</h1>
+        <div class="plano-tag">{{ usuario.plano_ativo }}</div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <h3>0</h3>
+                <p>Membros</p>
+            </div>
+            <div class="stat-item">
+                <h3>0</h3>
+                <p>Lines</p>
+            </div>
+            <div class="stat-item">
+                <h3>0</h3>
+                <p>Pontos</p>
+            </div>
+        </div>
+
+        <button class="btn" onclick="location.href='{{ url_for('planos.pagamentos') }}'">Gerenciar Plano</button>
+        <button class="btn btn-danger" onclick="location.href='{{ url_for('auth.logout') }}'">Sair da Conta</button>
+    </div>
+</div>
+
+</body>
+</html>

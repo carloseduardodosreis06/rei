@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Guilda - Guild Control</title>
+    <style>
+        body {
+            margin: 0;
+            background: #0d0018;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background: #1b0030;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #9d00ff;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .container {
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1b0030;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #330066;
+            margin-bottom: 20px;
+        }
+        h1, h2 { color: #c78cff; }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #330066;
+            background: #0d0018;
+            color: white;
+            box-sizing: border-box;
+        }
+        .btn {
+            background: #9d00ff;
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .line {
+            background: #260040;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #3d0066;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{{ url_for('dashboard') }}" style="font-size: 20px; color: #c78cff;">Guild Control</a>
+    <div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('auth.logout') }}" style="color: #ff4d4d;">Sair</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Gerenciar Guilda</h1>
+    
+    <div class="card">
+        <h2>Dados da Guilda</h2>
+        <form action="{{ url_for('guildas.criar_guilda') }}" method="POST">
+            <div class="form-group">
+                <label>Nome da Guilda</label>
+                <input type="text" name="nome" value="Minha Guilda" required>
+            </div>
+            <div class="form-group">
+                <label>Líder</label>
+                <input type="text" name="lider" value="GuildMaster_Pro" required>
+            </div>
+            <button type="submit" class="btn">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Lines</h2>
+        <div class="line">Line 1 - 4 Jogadores</div>
+        <div class="line">Line 2 - 4 Jogadores</div>
+        <div class="line">Line 3 - 4 Jogadores</div>
+        <div class="line">Line 4 - 4 Jogadores</div>
+        <div class="line">Line 5 - 4 Jogadores</div>
+    </div>
+</div>
+
+</body>
+</html>

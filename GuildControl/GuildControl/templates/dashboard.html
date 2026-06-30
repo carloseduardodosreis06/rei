@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Control - Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            background: #0d0018;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background: #1b0030;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #9d00ff;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .container {
+            padding: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1b0030;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #330066;
+        }
+        h1, h2 {
+            color: #c78cff;
+        }
+        .btn {
+            background: #9d00ff;
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #b84dff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{{ url_for('dashboard') }}" style="font-size: 20px; color: #c78cff;">Guild Control</a>
+    <div>
+        <a href="{{ url_for('guildas.pagina_guilda') }}">Minha Guilda</a>
+        <a href="{{ url_for('membros.listar_membros') }}">Ranking & Membros</a>
+        <a href="{{ url_for('planos.pagamentos') }}">Planos</a>
+        <a href="{{ url_for('auth.logout') }}" style="color: #ff4d4d;">Sair</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Bem-vindo, {{ usuario.username }}</h1>
+    
+    <div class="grid">
+        <div class="card">
+            <h2>Minha Guilda</h2>
+            <p>Status do Plano: <strong>{{ usuario.plano_ativo }}</strong></p>
+            <p>Gerencie os dados da sua guilda e suas lines.</p>
+            <a href="{{ url_for('guildas.pagina_guilda') }}" class="btn">Gerenciar Guilda</a>
+        </div>
+
+        <div class="card">
+            <h2>Pontuação & Ranking</h2>
+            <p>Acompanhe o desempenho dos seus membros.</p>
+            <a href="{{ url_for('membros.listar_membros') }}" class="btn">Ver Ranking</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Ações Rápidas</h2>
+        <a href="{{ url_for('membros.listar_membros') }}" class="btn">Adicionar Membro</a>
+        <a href="{{ url_for('planos.pagamentos') }}" class="btn" style="background: #00cc66;">Fazer Upgrade</a>
+    </div>
+</div>
+
+</body>
+</html>

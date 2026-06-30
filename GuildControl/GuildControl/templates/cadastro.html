@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Guild Control</title>
+    <style>
+        body {
+            margin: 0;
+            background: #0d0018;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: #1b0030;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #330066;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(153, 0, 255, 0.3);
+        }
+        h1 { color: #c78cff; margin-bottom: 30px; font-size: 32px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #330066;
+            background: #0d0018;
+            color: white;
+            box-sizing: border-box;
+        }
+        .btn {
+            background: #9d00ff;
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #b73cff; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Criar Conta</h1>
+    <form action="{{ url_for('auth.login') }}" method="GET">
+        <input type="text" placeholder="Seu Nome" required>
+        <input type="email" placeholder="Seu E-mail" required>
+        <input type="password" placeholder="Crie uma Senha" required>
+        <input type="password" placeholder="Confirme a Senha" required>
+        <button type="submit" class="btn">Cadastrar</button>
+    </form>
+    <p style="margin-top: 20px; font-size: 14px; color: #ccc;">
+        Já tem conta? <a href="{{ url_for('auth.login') }}" style="color: #9d00ff; text-decoration: none;">Faça Login</a>
+    </p>
+</div>
+
+</body>
+</html>
